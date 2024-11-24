@@ -8,9 +8,15 @@
 		"dev": "remix vite:dev",
 		"lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
 		"start": "remix-serve ./build/server/index.js",
-		"typecheck": "tsc"
+		"typecheck": "tsc",
+		"db:create": "dotenv -e .env.development -- npx prisma db push",
+		"db:create:test": "dotenv -e .env.test -- npx prisma db push",
+		"db:migrate": "dotenv -e .env.development -- npx prisma migrate dev",
+		"db:migrate:test": "dotenv -e .env.test -- npx prisma migrate deploy",
+		"test": "dotenv -e .env.test -- vitest"
 	},
 	"dependencies": {
+		"@prisma/client": "^5.22.0",
 		"@remix-run/node": "^2.14.0",
 		"@remix-run/react": "^2.14.0",
 		"@remix-run/serve": "^2.14.0",
